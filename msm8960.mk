@@ -13,6 +13,8 @@
 # limitations under the License.
 
 # Permissions
+$(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
+
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
@@ -30,6 +32,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/base/nfc-extras/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
@@ -50,7 +53,21 @@ PRODUCT_PACKAGES += \
     copybit.msm8960 \
     gralloc.msm8960 \
     hwcomposer.msm8960 \
-    power.msm8960
+    power.msm8960 \
+    memtrack.msm8960
+
+# GPS
+PRODUCT_PACKAGES += \
+    libloc_adapter \
+    libloc_eng \
+    libloc_api_v02 \
+    libloc_ds_api \
+    libloc_core \
+    libizat_core \
+    libgeofence \
+    libgps.utils \
+    gps.msm8960 \
+    flp.msm8960
 
 # DeviceSettings
 PRODUCT_PACKAGES += \
@@ -66,10 +83,9 @@ PRODUCT_PACKAGES += \
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers
 
 # keylayouts
 PRODUCT_COPY_FILES += \
